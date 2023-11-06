@@ -12,9 +12,12 @@ void type_prompt(void);
 void clear_in(char *input, char *output);
 
 //for with string 
-int _strlen(const char *s);
-char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
-char *_strncat(char *dest, const char *src, size_t n);
+char *_strcat(char *dest, const char *src);
+int _strcmp(char *s1, char *s2);
+char *_strchr(char *s, char c);
+int _strspn(char *s, char *accept);
+
+
 
 #endif/*MAIN_H*/
