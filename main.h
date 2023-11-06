@@ -11,13 +11,10 @@
 void type_prompt(void);
 void clear_in(char *input, char *output);
 
-//for with string 
 char *_strcat(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
 int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
 int _strspn(char *s, char *accept);
-
-
 
 #endif/*MAIN_H*/
