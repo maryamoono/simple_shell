@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <signal.h>
 
 
 #define BUFFER_SIZE 1024
@@ -38,6 +39,8 @@ void cd_previous(data_shell *datash);
 void cd_to_home(data_shell *datash); 
 int cd_shell(data_shell *datash);
 
+//handle copy sigint
+void copy_sigint(int sigint);
 
 
 
