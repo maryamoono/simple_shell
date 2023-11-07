@@ -31,6 +31,12 @@ int _isdigit(const char *s);
 //for with string 3
 void rev_string(char *s);
 
+//to handle cd
+void cd_dot(data_shell *datash);
+void cd_to(data_shell *datash);
+void cd_previous(data_shell *datash);
+void cd_to_home(data_shell *datash); 
+int cd_shell(data_shell *datash);
 
 
 
