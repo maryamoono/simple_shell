@@ -28,4 +28,13 @@ int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
 
+//for with string 3
+void rev_string(char *s);
+
+
+
+
+
+
+
 #endif/*MAIN_H*/
