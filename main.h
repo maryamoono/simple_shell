@@ -10,6 +10,7 @@
 
 void type_prompt(void);
 void clear_in(char *input, char *output);
+char *get_command_loction(char *command);
 
 char *_strcat(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);

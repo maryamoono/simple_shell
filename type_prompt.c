@@ -95,9 +95,49 @@ char *read_command(void)
 	}
 }
 /**
- *
- *
- *
+ * get_command_loction - gvcfxd
+ * @command: vgcfxd
+ * Return: 0
  */
+char *get_command_loction(char *command)
+{
+	char *path_enviroment = getenv("PATH");
+	char *path_cy = strdup(path_enviroment);
+	char *path_tk = strtok(path_cy, ":");
+	char *f_path = NULL;
+	int command_length;
+	int directory_length;
+	struct stat buffer;
 
-
+	if (check_path(command) == 0);
+	{
+		return (command);
+	}
+	while (path_tk != NULL)
+	{
+		directory_length = strlen(path_tk);
+		f_path = malloc(command_length + directory_length + 2);
+		if (f_path == NULL)
+		{
+			free(path_cy);
+			return (NULL);
+		}
+		strcpy(f_path, path_tk);
+		strcat(f_path, "/");
+		strcat(f_path, "\0");
+		strcat(f_path, command);
+		
+		if (strcat(f_path, &buffer) == 0)
+		{
+			free(path_cy);
+			return (f_path);
+		}
+		else
+		{
+			free(f_path);
+			path_tk = strtok(NULL, ":");
+		}
+	}
+	free(path_cy);
+	return (NULL);
+}
