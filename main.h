@@ -43,7 +43,58 @@ int cd_shell(data_shell *datash);
 //handle copy sigint
 void copy_sigint(int sigint);
 
+/**
+ * struct data - struct that contains all relevant data on runtime.
+ *
+ * @av: argument vector.
+ * @input: command line written by the user.
+ * @args: tokens of the command line .
+ * @status: last status of the shell .
+ * @counter: lines counter .
+ * @_environ: environment variable .
+ * @pid: process ID of the shell .
+ */
+typedef struct data
+{
+	char **av;
+	char *input;
+	char **args;
+	int status;
+	int counter;
+	char **_environ;
+	char *pid;
+} data_shell;
 
+//for RM error
+int get_error(data_shell *datash, int error);
+
+// for RM error1
+char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str);
+char *error_get_cd(data_shell *datash);
+char *error_not_found(data_shell *datash);
+
+// for RM error2
+char *error_exit_shell(data_shell *datash);
+char *error_env(data_shell *datash);
+char *error_path_126(data_shell *datash);
+
+//for RM_std
+int get_lenght(int n);
+char *RM_itoa(int n);
+int _atoi(char *s);
+
+
+//handle cmd
+int cdir(char *path, int *i);
+char *locates(char *cmd, char **_environ);
+int executable(data_shell *datash);
+int check_error_cmd(char *dir, data_shell *datash);
+int cmd_exe(data_shell *datash);
+
+//for environment 
+int cmp_environment_name(const char *nenv, const char *name);
+char *_get_environment(const char *name, char **_environ);
+int _environment(data_shell *datash);
 
 
 
