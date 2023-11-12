@@ -38,7 +38,7 @@ char *_locates(char *cmd, char **_environ)
 	int len_dir, len_cmd, i;
 	struct stat st;
 
-	path = _getenv("PATH", _environ);
+	path = _get_environment("PATH", _environ);
 	if (path)
 	{
 		ptr_path = _strdup(path);

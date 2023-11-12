@@ -14,7 +14,7 @@ void cd_dot(data_shell *datash)
 
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, datash);
+	set_environment("OLDPWD", cp_pwd, datash);
 	dir = datash->args[1];
 
 	if (_strcmp(".", dir) == 0)
@@ -45,7 +45,7 @@ void cd_dot(data_shell *datash)
 	if (cp_strtok_pwd != NULL)
 	{
 		chdir(cp_strtok_pwd);
-		set_env("PWD", cp_strtok_pwd, datash);
+		set_environment("PWD", cp_strtok_pwd, datash);
 	}
 	else
 	{
@@ -78,10 +78,10 @@ void cd_to(data_shell *datash)
 	}
 
 	cp_pwd = _strdup(pwd);
-	set_env("OLDPWD", cp_pwd, datash);
+	set_environment("OLDPWD", cp_pwd, datash);
 
 	cp_dir = _strdup(dir);
-	set_env("PWD", cp_dir, datash);
+	set_environment("PWD", cp_dir, datash);
 
 	free(cp_pwd);
 	free(cp_dir);
@@ -106,21 +106,21 @@ void cd_previous(data_shell *datash)
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
 
-	p_oldpwd = _getenv("OLDPWD", datash->_environ);
+	p_oldpwd = _get_environment("OLDPWD", datash->_environ);
 
 	if (p_oldpwd == NULL)
 		cp_oldpwd = cp_pwd;
 	else
 		cp_oldpwd = _strdup(p_oldpwd);
 
-	set_env("OLDPWD", cp_pwd, datash);
+	set_environment("OLDPWD", cp_pwd, datash);
 
 	if (chdir(cp_oldpwd) == -1)
-		set_env("PWD", cp_pwd, datash);
+		set_environment("PWD", cp_pwd, datash);
 	else
-		set_env("PWD", cp_oldpwd, datash);
+		set_environment("PWD", cp_oldpwd, datash);
 
-	p_pwd = _getenv("PWD", datash->_environ);
+	p_pwd = _get_environment("PWD", datash->_environ);
 
 	write(STDOUT_FILENO, p_pwd, _strlen(p_pwd));
 	write(STDOUT_FILENO, "\n", 1);
@@ -149,11 +149,11 @@ void cd_to_home(data_shell *datash)
 	getcwd(pwd, sizeof(pwd));
 	p_pwd = _strdup(pwd);
 
-	home = _getenv("HOME", datash->_environ);
+	home = _get_environment("HOME", datash->_environ);
 
 	if (home == NULL)
 	{
-		set_env("OLDPWD", p_pwd, datash);
+		set_environment("OLDPWD", p_pwd, datash);
 		free(p_pwd);
 		return;
 	}
@@ -165,8 +165,8 @@ void cd_to_home(data_shell *datash)
 		return;
 	}
 
-	set_env("OLDPWD", p_pwd, datash);
-	set_env("PWD", home, datash);
+	set_environment("OLDPWD", p_pwd, datash);
+	set_environment("PWD", home, datash);
 	free(p_pwd);
 	datash->status = 0;
 }
