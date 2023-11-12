@@ -141,3 +141,42 @@ char *get_command_loction(char *command)
 	free(path_cy);
 	return (NULL);
 }
+/**
+ * extract_arg - cfxds
+ * @input: cfxd
+ * @argv: cfxdzs
+ * Return: integer
+ */
+int extract_arg(char *input, char *argv[20])
+{
+	const char deli[2] = " ";
+	char *tk;
+	int x = 0;
+
+	tk = strtok(input, deli);
+	while (tk != NULL)
+	{
+		argv[x] = malloc(sizeof(char) * (strlen(tk) + 1);
+		strcpy(argv[x++], tk);
+		tk = strtok(NULL, deli);
+	}
+	argv[x] = NULL;
+	return (x);
+}
+/**
+ * free_arg - fcxdzs
+ * @argv: vgcfxd
+ * @len: fcxdz
+ * Return: lko
+ */
+void free_arg(char *argv[20]. int len)
+{
+	int x;
+	
+	x = 0;
+	while(x < len)
+	{
+		x++;
+		free(argv[x]);
+	}
+}

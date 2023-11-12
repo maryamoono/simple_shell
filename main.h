@@ -13,7 +13,8 @@
 void type_prompt(void);
 void clear_in(char *input, char *output);
 char *get_command_loction(char *command);
-
+int extract_arg(char *input, char *argv[20]);
+void free_arg(char *argv[20]. int len);
 
 //for with string
 char *_strcat(char *dest, const char *src);
