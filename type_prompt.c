@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * type_prompt - bhvgcfxd print asign
  * @void: void
@@ -75,9 +75,9 @@ char *read_command(void)
 		if (read == -1)
 		{
 			free(command);
-			exit(SUCCESS);
+			exit(EXIT_SUCCESS);
 		}
-		if (command == 0)
+		if (command == '#')
 		{
 			free(command);
 			return (strdup(""));
@@ -99,46 +99,57 @@ char *read_command(void)
  * @command: vgcfxd
  * Return: 0
  */
-char *get_command_loction(char *command)
+char *get_command_loction(char *co)
 {
-	char *path_enviroment = getenv("PATH");
-	char *path_cy = strdup(path_enviroment);
-	char *path_tk = strtok(path_cy, ":");
+	char *path_cy = NULL;
 	char *f_path = NULL;
-	int command_length;
-	int directory_length;
+	char *path_tk;
+	char *pa;
+	int co_length;
+	int dir_length;
 	struct stat buffer;
 
-	if (check_path(command) == 0);
+	if (check_path(co) == 0)
 	{
-		return (command);
+		pa = getenv("PATH");
+		if (pa)
+		{
+			path_cy = strdup(path);
+			co_Length = strlen(co);
+			path_tk = strtok(path_cy, ":");
+			while (path_tk != NULL)
+			{
+				m
+				dir_length = strlen(path_tk);
+				f_path = malloc(co_length + dir_length + 2);
+				strcpy(f_path, path_tk);
+				strcat(f_path, "/");
+				strcat(f_path, "\0");
+				strcat(f_path, co);
+				if (stat(f_path, &buffer) == 0)
+				{
+					free(path_cy);
+					return (f_path);
+				}
+				else
+				{
+					free(f_path);
+					path_tk = strtok(NULL, ":");
+				}
+			}
+		}
 	}
-	while (path_tk != NULL)
+	else
 	{
-		directory_length = strlen(path_tk);
-		f_path = malloc(command_length + directory_length + 2);
-		if (f_path == NULL)
-		{
+		if (path_cy != NULL)
 			free(path_cy);
-			return (NULL);
-		}
-		strcpy(f_path, path_tk);
-		strcat(f_path, "/");
-		strcat(f_path, "\0");
-		strcat(f_path, command);
-		
-		if (strcat(f_path, &buffer) == 0)
-		{
-			free(path_cy);
-			return (f_path);
-		}
+		if (stat(co, &buffer) == 0)
+			return (co);
 		else
-		{
-			free(f_path);
-			path_tk = strtok(NULL, ":");
-		}
+			return (NULL);
 	}
-	free(path_cy);
+	if (path_cy != NULL)
+		free(path_cy);
 	return (NULL);
 }
 /**
@@ -176,7 +187,7 @@ void free_arg(char *argv[20]. int len)
 	x = 0;
 	while(x < len)
 	{
-		x++;
 		free(argv[x]);
+		x++;
 	}
 }

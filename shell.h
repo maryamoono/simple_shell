@@ -12,7 +12,7 @@
 
 void type_prompt(void);
 void clear_in(char *input, char *output);
-char *get_command_loction(char *command);
+char *get_command_loction(char *co);
 int extract_arg(char *input, char *argv[20]);
 void free_arg(char *argv[20]. int len);
 
