@@ -32,7 +32,8 @@ void free_data(data_shell *datash)
  /* Change av to char **av*/
 void set_data(data_shell *datash, char **av)
 {
-  unsigned int i = 0; // Initialize i to 0
+  /* Initialize i to 0*/
+  unsigned int i = 0;
   /* Change av to av */
   datash->av = av; 
   datash->input = NULL;
@@ -47,7 +48,7 @@ void set_data(data_shell *datash, char **av)
 
   for (i = 0; __environ[i] != NULL; i++) // Change the loop condition to check for NULL
   {
-    datash->_environ[i] = _strdup(_environ[i]);
+    datash->_environ[i] = _strdup(__environ[i]);
   }
 
   datash->_environ[i] = NULL;
