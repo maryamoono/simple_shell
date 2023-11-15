@@ -38,12 +38,12 @@ void set_data(data_shell *datash, char **av) // Change av to char **av
   datash->status = 0;
   datash->counter = 1;
 
-  for (i = 0; environ[i] != NULL; i++) // Change the loop condition to check for NULL
+  for (i = 0; _environ[i] != NULL; i++) // Change the loop condition to check for NULL
     ;
 
   datash->_environ = malloc(sizeof(char *) * (i + 1));
 
-  for (i = 0; environ[i] != NULL; i++) // Change the loop condition to check for NULL
+  for (i = 0; _environ[i] != NULL; i++) // Change the loop condition to check for NULL
   {
     datash->_environ[i] = _strdup(environ[i]);
   }
