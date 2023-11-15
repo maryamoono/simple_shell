@@ -176,12 +176,12 @@ int cmd_exe(data_shell *datash)
 	char *dir;
 	(void) wpd;
 
-	exec = is_executable(datash);
+	exec = executable(datash);
 	if (exec == -1)
 		return (1);
 	if (exec == 0)
 	{
-		dir = _which(datash->args[0], datash->_environ);
+		dir = _locates(datash->args[0], datash->_environ);
 		if (check_error_cmd(dir, datash) == 1)
 			return (1);
 	}
@@ -190,7 +190,7 @@ int cmd_exe(data_shell *datash)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = _which(datash->args[0], datash->_environ);
+			dir = _locates(datash->args[0], datash->_environ);
 		else
 			dir = datash->args[0];
 		execve(dir + exec, datash->args, datash->_environ);

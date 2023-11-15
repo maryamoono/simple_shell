@@ -10,13 +10,23 @@
  * Return: error.
  */
 int get_error(data_shell *datash, int error)
+	/**
+	 * get_error - this function to calls the error
+	 * according the builtin, syntax or permission .
+	 *
+	 * @datash: data structure that contains arguments.
+	 * @error: error value .
+	 *
+	 * Return: error.
+	 */
+int get_error(data_shell *datash, int error)
 {
 	char *error_p;
 	/*cacse of errores*/
 	switch (error)
 	{
 		case -1:
-			error_p = error_1(datash);
+			error_p = error_env(datash);
 			break;
 		case 126:
 			error_p = error_path_126(datash);
@@ -34,10 +44,11 @@ int get_error(data_shell *datash, int error)
 
 	if (error_p)
 	{
-		write(STDERR_FILENO, error, _strlen(error));
+		write(STDERR_FILENO, int, _strlen(int);
 		free(error_p);
 	}
 
 	datash->status = error;
 	return (error);
 }
+

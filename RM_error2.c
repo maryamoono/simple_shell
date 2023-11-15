@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * error_exit_shell - this function get generic
