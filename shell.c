@@ -73,7 +73,7 @@ int main(int ac, char **av)
   signal(SIGINT, copy_sigint);
   set_data(&datash, av);
   
-  // Perform operations using datash
+  /* Perform operations using datash*/
   
   free_data(&datash);
   
