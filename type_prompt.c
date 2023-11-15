@@ -19,6 +19,7 @@ void clear_in(char *input, char *output)
 	int o = 0;
 	int m = 0;
 	int space = 0;
+
 	while (input[o] != '\0')
 	if (input[o] == '#')
 	{
@@ -83,16 +84,16 @@ char *read_command(void)
 			return (strdup(""));
 		}
 		break;
-		output = malloc(sizeof(char *) *(strlen(command) + 1));
-		if (output == NULL)
-		{
-			free(command);
-			return (NULL);
-		}
-		clear_in(command, output);
-		free(command);
-		return (output);
 	}
+	output = malloc(sizeof(char *) *(strlen(command) + 1));
+	if (output == NULL)
+	{
+		free(command);
+		return (NULL);
+	}
+	clear_in(command, output);
+	free(command);
+	return (output);
 }
 /**
  * get_command_loction - gvcfxd
@@ -101,12 +102,8 @@ char *read_command(void)
  */
 char *get_command_loction(char *co)
 {
-	char *path_cy = NULL;
-	char *f_path = NULL;
-	char *path_tk;
-	char *pa;
-	int co_length;
-	int dir_length;
+	char *pa, *path_cy, *path_cy = NULL, *path_tk, *f_path;
+	int co_length, dir_length;
 	struct stat buffer;
 
 	if (check_path(co) == 0)
@@ -127,15 +124,12 @@ char *get_command_loction(char *co)
 				strcat(f_path, "\0");
 				strcat(f_path, co);
 				if (stat(f_path, &buffer) == 0)
-				{
-					free(path_cy);
+				{free(path_cy);
 					return (f_path);
 				}
 				else
-				{
-					free(f_path);
-					path_tk = strtok(NULL, ":");
-				}
+				{free(f_path);
+					path_tk = strtok(NULL, ":");}
 			}
 		}
 	}
@@ -146,8 +140,7 @@ char *get_command_loction(char *co)
 		if (stat(co, &buffer) == 0)
 			return (co);
 		else
-			return (NULL);
-	}
+			return (NULL);}
 	if (path_cy != NULL)
 		free(path_cy);
 	return (NULL);
@@ -158,7 +151,7 @@ char *get_command_loction(char *co)
  * @argv: cfxdzs
  * Return: integer
  */
-int extract_arg(char *input, char *argv[20])
+int extract_arg(char *input, char *argv[16])
 {
 	const char deli[2] = " ";
 	char *tk;
@@ -177,15 +170,15 @@ int extract_arg(char *input, char *argv[20])
 /**
  * free_arg - fcxdzs
  * @argv: vgcfxd
- * @len: fcxdz
+ * @l: fcxdz
  * Return: lko
  */
-void free_arg(char *argv[20]. int len)
+void free_arg(char *argv[16]. int l)
 {
 	int x;
-	
+
 	x = 0;
-	while(x < len)
+	while (x < len)
 	{
 		free(argv[x]);
 		x++;

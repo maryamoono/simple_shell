@@ -5,9 +5,9 @@
  * @txt: lol
  * Return: lol
  */
-void exit(char *ar[20], char *txt)
+void pt_exit(char *ar[20], char *txt)
 {
-	char error[404];
+	char error[128];
 
 	strcpy(error, "./hsh: 1: ");
 	strcat(error, ar[0]);
@@ -15,6 +15,7 @@ void exit(char *ar[20], char *txt)
 	strcat(error, "\n");
 	strcat(error, txt);
 	strcat(error, ar[1]);
+	write(STDERR_FILENO, error, strlen(error));
 }
 /**
  * num - number is it
@@ -83,9 +84,9 @@ int le_exit(char *x)
 int check_exit(char *i)
 {
 	int x = 0;
-	char rry[6];
+	char rry[4];
 	
-	for (x = 0 ; x < 6 && i[x] != '\0' ; x++)
+	for (x = 0 ; x < 4 && i[x] != '\0' ; x++)
 	{
 		rry[x] = i[x];
 	}

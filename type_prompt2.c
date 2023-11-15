@@ -33,7 +33,7 @@ void env(void)
  * @arge: 20
  * Return: bgv
  */
-void exe_f(char *x, char *n ,char *arge[20])
+void exe_f(char *x, char *n ,char *arge[16])
 {
 	int l;
 	unsigned int w;
@@ -41,7 +41,7 @@ void exe_f(char *x, char *n ,char *arge[20])
 	if (w != 0)
 		free(x);
 	free_arge(arge, l);
-	free_co(n, arge[20]);
+	free_co(n, arge[0]);
 }
 /**
  * exe - execute
@@ -50,35 +50,35 @@ void exe_f(char *x, char *n ,char *arge[20])
  */
 int exe(char *i)
 {
-	char *co, *ar[20], error[40];
+	char *co, *ar[16], error[32];
 	int s, b = 0;
 	pid_t pid;
 
 	if (i == NULL)
 		exit(EXIT_SUCCESS);
 	b = extract_arge(i, ar);
-	co = arge[20];
+	co = arge[0];
 	co = get_command_loction(co);
 	if (co == NULL)
 	{
 		strcpy(error, "./hsh: 1: ");
 		strcat(error, ": not found\n");
 		write(STDERR_FILENO, error, strlen(error));
-		exe_f(i, co, ar, b, 20);
-		return (50);
+		exe_f(i, co, ar, b, 0);
+		return (127);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
-		write(STDERR_FILENO, "fork() error\n", 23);
+		write(STDERR_FILENO, "fork() error\n", 13);
 		exe_f(i, co, ar, b, 1);
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0)
 	{
-		if (exe(co, ar, NULL) == -1)
+		if (execve(co, ar, NULL) == -1)
 		{
-			perror("exe");
+			perror("execve");
 			exe_f(i, co, ar, b, 1);
 			exit(EXIT_FAILURE);
 		}
@@ -90,8 +90,8 @@ int exe(char *i)
 			exe_f(i, co, ar, b, 1);
 			exit(EXIT_FAILURE);
 		}
-		exe_f(i, co, ar, b, 1);
-		return (MEXITSTATUS(s));
+		exe_f(i, co, ar, b, 0);
+		return (WEXITSTATUS(s));
 	}
 	exe_f(i, co, ar, b, 0);
 	return (0);
