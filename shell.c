@@ -1,76 +1,79 @@
 #include "shell.h"
-
-/**
- * free_data -this function to frees data structure.
+/*
+ * free_data - This function frees data structure.
  *
- * @datash: data structure.
+ * @datash: Data structure.
  *
- * Return: no return
+ * Return: No return.
  */
 void free_data(data_shell *datash)
 {
-	unsigned int i;
+  unsigned int i = 0; // Initialize i to 0
 
-	for (i = 0; datash->_environ[i]; i++)
-	{
-		free(datash->_environ[i]);
-	}
+  while (datash->_environ[i] != NULL) // Change the loop condition to check for NULL
+  {
+    free(datash->_environ[i]);
+    i++;
+  }
 
-	free(datash->_environ);
-	free(datash->pid);
+  free(datash->_environ);
+  free(datash->pid);
 }
 
-/**
- * set_data - This function to Initialize data structure.
+/*
+ * set_data - This function initializes data structure.
  *
- * @datash: data structure.
- * @av: argument vector.
+ * @datash: Data structure.
+ * @av: Argument vector.
  *
- * Return: no return
+ * Return: No return.
  */
-void set_data(data_shell *datash, char **av)
+void set_data(data_shell *datash, char **av) // Change av to char **av
 {
-	unsigned int i;
+  unsigned int i = 0; // Initialize i to 0
 
-	datash->av = av;
-	datash->input = NULL;
-	datash->args = NULL;
-	datash->status = 0;
-	datash->counter = 1;
+  datash->av = av; // Change av to av
+  datash->input = NULL;
+  datash->args = NULL;
+  datash->status = 0;
+  datash->counter = 1;
 
-	for (i = 0; environ[i]; i++)
-		;
+  for (i = 0; environ[i] != NULL; i++) // Change the loop condition to check for NULL
+    ;
 
-	datash->_environ = malloc(sizeof(char *) * (i + 1));
+  datash->_environ = malloc(sizeof(char *) * (i + 1));
 
-	for (i = 0; environ[i]; i++)
-	{
-		datash->_environ[i] = _strdup(environ[i]);
-	}
+  for (i = 0; environ[i] != NULL; i++) // Change the loop condition to check for NULL
+  {
+    datash->_environ[i] = _strdup(environ[i]);
+  }
 
-	datash->_environ[i] = NULL;
-	datash->pid = RM_itoa(getpid());
+  datash->_environ[i] = NULL;
+  datash->pid = RM_itoa(getpid());
 }
 
-/**
+/*
  * main - Entry point.
  *
- * @ac: argument count
- * @av: argument vector
+ * @ac: Argument count.
+ * @av: Argument vector.
  *
  * Return: 0 on success.
  */
 int main(int ac, char **av)
 {
-	data_shell datash;
-	(void) ac;
+  data_shell datash;
+  (void) ac;
 
-	signal(SIGINT, copy_sigint);
-	set_data(&datash, av);
-	//pormit
-	free_data(&datash);
-	if (datash.status < 0)
-		return (255);
-	return (datash.status);
+  signal(SIGINT, copy_sigint);
+  set_data(&datash, av);
+  
+  // Perform operations using datash
+  
+  free_data(&datash);
+  
+  if (datash.status < 0)
+    return (255);
+  
+  return (datash.status);
 }
-
