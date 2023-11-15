@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _memcpy - copies information between void pointers.
+ * _memcpy -this function to copies information between void pointers.
  *
  * @newptr: destination pointer.
  * @ptr: source pointer.
@@ -20,7 +20,7 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size)
 }
 
 /**
- * _realloc - reallocates a memory block.
+ * _realloc - this function to reallocates a memory block.
  *
  * @ptr: pointer to the memory previously allocated.
  * @old_size: size, in bytes, of the allocated space of ptr.
@@ -60,7 +60,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * _reallocdp - reallocates a memory block of a double pointer .
+ * _reallocdp -this function to reallocates a memory block of a double pointer .
  *
  * @ptr: double pointer to the memory previously allocated.
  * @old_size: size, in bytes, of the allocated space of ptr.
@@ -91,4 +91,4 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 
 	return (newptr);
-}
+}  
