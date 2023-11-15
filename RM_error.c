@@ -1,7 +1,8 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * get_error - calls the error according the builtin, syntax or permission .
+ * get_error - this function to calls the error 
+ * according the builtin, syntax or permission .
  *
  * @datash: data structure that contains arguments.
  * @error: error value .
@@ -11,7 +12,7 @@
 int get_error(data_shell *datash, int error)
 {
 	char *error_p;
-
+	/*cacse of errores*/
 	switch (error)
 	{
 		case -1:

@@ -1,11 +1,10 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * copy_sigint - Handle the crtl + c call in prompt .
+ * copy_sigint -this function to
+ * Handle the crtl + c call in prompt .
  * 
  * @sigint: Signal handler.
- *
- *
  */
 void copy_sigint(int sigint)
 {

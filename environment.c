@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * cmp_environment_name - compares env variables names
- * with the name passed.
+ * cmp_environment_name - this function to 
+ * compares env variables names with the name passed.
  *
  * @nenv: name of the environment variable
  * @name: name passed
@@ -25,7 +25,7 @@ int cmp_environment_name(const char *nenv, const char *name)
 }
 
 /**
- * _get_environment - this function get an environment variable.
+ * _get_env - this function get an environment variable.
  *
  * @name: name of the environment variable
  * @_environ: environment variable
@@ -33,7 +33,7 @@ int cmp_environment_name(const char *nenv, const char *name)
  * Return: value of the environment variable if is found.
  * In other case, returns NULL.
  */
-char *_get_environment(const char *name, char **_environ)
+char *_get_env(const char *name, char **_environ)
 {
 	char *ptr_env;
 	int i, mov;
@@ -58,13 +58,13 @@ char *_get_environment(const char *name, char **_environ)
 }
 
 /**
- * _environment -this function prints the evironment variables.
+ * _env -this function prints the evironment variables.
  *
  * @datash: data relevant.
  *
  * Return: 1 on success.
  */
-int _environment(data_shell *datash)
+int _env(data_shell *datash)
 {
 	int i, j;
 
@@ -108,7 +108,7 @@ char *copy_info(char *name, char *value)
 }
 
 /**
- * set_environment -this function sets an environment variable.
+ * set_env -this function sets an environment variable.
  *
  * @name: name of the environment variable.
  * @value: value of the environment variable.

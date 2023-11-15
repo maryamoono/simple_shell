@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _strdup - this function duplicates 
@@ -84,13 +84,15 @@ char *_strtok(char str[], const char *delim)
 	{
 		if (cmp_chars(str, delim))
 			return (NULL);
-		splitted = str; /*Store first address*/
+		/*Store first address*/
+		splitted = str; 
 		i = _strlen(str);
-		str_end = &str[i]; /*Store last address*/
+		/*Store last address*/
+		str_end = &str[i]; 
 	}
 	str_start = splitted;
-
-	if (str_start == str_end) /*Reaching the end*/
+	/*Reaching the end*/
+	if (str_start == str_end)
 		return (NULL);
 
 	for (bool = 0; *splitted; splitted++)

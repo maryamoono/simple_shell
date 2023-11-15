@@ -1,7 +1,7 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * cdir - checks ":" if is in the current directory.
+ * cdir -this function to checks ":" if is in the current directory.
  *
  * @path: type char pointer char.
  * @i: type int pointer of index.
@@ -25,7 +25,7 @@ int cdir(char *path, int *i)
 }
 
 /**
- * locates - function to locates a command .
+ * locates - this function to locates a command .
  *
  * @cmd: command name .
  * @_environ: environment variable.
@@ -38,7 +38,7 @@ char *_locates(char *cmd, char **_environ)
 	int len_dir, len_cmd, i;
 	struct stat st;
 
-	path = _get_environment("PATH", _environ);
+	path = _get_env("PATH", _environ);
 	if (path)
 	{
 		ptr_path = _strdup(path);
@@ -47,7 +47,7 @@ char *_locates(char *cmd, char **_environ)
 		i = 0;
 		while (token_path != NULL)
 		{
-			if (is_cdir(path, &i))
+			if (cdir(path, &i))
 				if (stat(cmd, &st) == 0)
 					return (cmd);
 			len_dir = _strlen(token_path);
@@ -76,13 +76,13 @@ char *_locates(char *cmd, char **_environ)
 }
 
 /**
- * executable - determines if is an executable .
+ * executable - this function to determines if is an executable .
  *
  * @datash: data structure.
  *
  * Return: 0 if is not an executable, other number if it does .
  */
-int is_executable(data_shell *datash)
+int executable(data_shell *datash)
 {
 	struct stat st;
 	int i;
@@ -122,7 +122,8 @@ int is_executable(data_shell *datash)
 }
 
 /**
- * check_error_cmd - function verifies if user has permissions to access.
+ * check_error_cmd -this function to verifies
+ * if user has permissions to access.
  *
  * @dir: destination directory.
  * @datash: data structure.
@@ -160,7 +161,7 @@ int check_error_cmd(char *dir, data_shell *datash)
 }
 
 /**
- * cmd_exe - function to executes command lines.
+ * cmd_exe -this function to executes command lines.
  *
  * @datash: data relevant (args and input).
  *

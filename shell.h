@@ -83,7 +83,6 @@ int get_lenght(int n);
 char *RM_itoa(int n);
 int _atoi(char *s);
 
-
 //handle cmd
 int cdir(char *path, int *i);
 char *locates(char *cmd, char **_environ);
@@ -93,13 +92,13 @@ int cmd_exe(data_shell *datash);
 
 //for environment 
 int cmp_environment_name(const char *nenv, const char *name);
-char *_get_environment(const char *name, char **_environ);
-int _environment(data_shell *datash);
-void set_environment(char *name, char *value, data_shell *datash);
+char *_get_env(const char *name, char **_environ);
+int _env(data_shell *datash);
+void set_env(char *name, char *value, data_shell *datash);
 char *copy_info(char *name, char *value);
 
 //for com
-int _setenvironment(data_shell *datash);
+int _setenv(data_shell *datash);
 int _unsetenv(data_shell *datash);
 
 //for memory
@@ -107,6 +106,9 @@ void _memcpy(void *newptr, const void *ptr, unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 
+//main shell 
+void set_data(data_shell *datash , char **av);
+void free_data(data_shell *datash);
 
 
 #endif/*MAIN_H*/

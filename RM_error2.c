@@ -75,6 +75,7 @@ char *error_env(data_shell *datash)
 /**
  * error_path_126 - this function get error message
  * for path and failure denied permission.
+ *
  * @datash: data relevant (counter, arguments).
  *
  * Return: The error string.

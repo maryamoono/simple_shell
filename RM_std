@@ -1,7 +1,8 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * get_lenght - Get the lenght of a number.
+ * get_lenght - this function to Get
+ * the lenght of a number.
  *
  * @n: type int number.
  *
@@ -70,7 +71,7 @@ char *RM_itoa(int n)
 }
 
 /**
- * _atoi - converts a string to an integer.
+ * _atoi - this function to converts a string to an integer.
  *
  * @s: input string.
  *

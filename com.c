@@ -1,13 +1,13 @@
-##include "main.h"
+##include "shell.h"
 
 /**
- * _setenvironment - compares environment variables names
+ * _setenv- this function to compares environment variables names
  * with the name passed.
  * @datash: data relevant (env name and env value)
  *
  * Return: 1 on success.
  */
-int _setenvironment(data_shell *datash)
+int _setenv(data_shell *datash)
 {
 
 	if (datash->args[1] == NULL || datash->args[2] == NULL)
@@ -16,19 +16,19 @@ int _setenvironment(data_shell *datash)
 		return (1);
 	}
 
-	set_environment(datash->args[1], datash->args[2], datash);
+	set_env(datash->args[1], datash->args[2], datash);
 
 	return (1);
 }
 
 /**
- * _unsetenvironment - deletes a environment variable
+ * _unsetenv - deletes a environment variable
  *
  * @datash: data relevant (env name)
  *
  * Return: 1 on success.
  */
-int _unsetenvironment(data_shell *datash)
+int _unsetenv(data_shell *datash)
 {
 	char **realloc_environ;
 	char *var_env, *name_env;
