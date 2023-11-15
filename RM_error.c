@@ -19,7 +19,7 @@ int get_error(data_shell *datash, int error)
 	 *
 	 * Return: error.
 	 */
-int get_error(data_shell *datash, int )
+int get_error(data_shell *datash, int error )
 {
 	char *error_p;
 	/*caces of errores*/
@@ -44,7 +44,7 @@ int get_error(data_shell *datash, int )
 
 	if (error_p)
 	{
-		write(STDERR_FILENO, int, _strlen(int);
+		write(STDERR_FILENO, error, _strlen(int);
 				free(error_p);
 				}
 
