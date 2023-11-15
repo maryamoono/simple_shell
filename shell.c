@@ -29,11 +29,12 @@ void free_data(data_shell *datash)
  *
  * Return: No return.
  */
-void set_data(data_shell *datash, char **av) // Change av to char **av
+ /* Change av to char **av*/
+void set_data(data_shell *datash, char **av)
 {
   unsigned int i = 0; // Initialize i to 0
-
-  datash->av = av; // Change av to av
+  /* Change av to av */
+  datash->av = av; 
   datash->input = NULL;
   datash->args = NULL;
   datash->status = 0;
@@ -44,7 +45,7 @@ void set_data(data_shell *datash, char **av) // Change av to char **av
 
   datash->_environ = malloc(sizeof(char *) * (i + 1));
 
-  for (i = 0; _environ[i] != NULL; i++) // Change the loop condition to check for NULL
+  for (i = 0; __environ[i] != NULL; i++) // Change the loop condition to check for NULL
   {
     datash->_environ[i] = _strdup(_environ[i]);
   }
