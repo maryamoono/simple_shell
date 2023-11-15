@@ -78,7 +78,7 @@ char *read_command(void)
 			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		if (command == '#')
+		if (command[0] == '#')
 		{
 			free(command);
 			return (strdup(""));
@@ -102,35 +102,31 @@ char *read_command(void)
  */
 char *get_command_loction(char *co)
 {
-	char *pa, *path_cy, *path_cy = NULL, *path_tk, *f_path;
+	char *pa, *path_cy = NULL, *path_tk, *f_path;
 	int co_length, dir_length;
 	struct stat buffer;
 
-	if (check_path(co) == 0)
+	pa = getenv("PATH");
+	if (pa)
 	{
-		pa = getenv("PATH");
-		if (pa)
+		path_cy = strdup(pa);
+		co_length = strlen(co);
+		path_tk = strtok(path_cy, ":");
+		while (path_tk != NULL)
 		{
-			path_cy = strdup(path);
-			co_Length = strlen(co);
-			path_tk = strtok(path_cy, ":");
-			while (path_tk != NULL)
-			{
-				m
-				dir_length = strlen(path_tk);
-				f_path = malloc(co_length + dir_length + 2);
-				strcpy(f_path, path_tk);
-				strcat(f_path, "/");
-				strcat(f_path, "\0");
-				strcat(f_path, co);
-				if (stat(f_path, &buffer) == 0)
-				{free(path_cy);
-					return (f_path);
-				}
-				else
-				{free(f_path);
-					path_tk = strtok(NULL, ":");}
+			dir_length = strlen(path_tk);
+			f_path = malloc(co_length + dir_length + 2);
+			strcpy(f_path, path_tk);
+			strcat(f_path, "/");
+			strcat(f_path, "\0");
+			strcat(f_path, co);
+			if (stat(f_path, &buffer) == 0)
+			{free(path_cy);
+				return (f_path);
 			}
+			else
+			{free(f_path);
+				path_tk = strtok(NULL, ":");}
 		}
 	}
 	else
@@ -160,7 +156,7 @@ int extract_arg(char *input, char *argv[16])
 	tk = strtok(input, deli);
 	while (tk != NULL)
 	{
-		argv[x] = malloc(sizeof(char) * (strlen(tk) + 1);
+		argv[x] = malloc(sizeof(char) * (strlen(tk) + 1));
 		strcpy(argv[x++], tk);
 		tk = strtok(NULL, deli);
 	}
@@ -173,12 +169,12 @@ int extract_arg(char *input, char *argv[16])
  * @l: fcxdz
  * Return: lko
  */
-void free_arg(char *argv[16]. int l)
+void free_arg(char *argv[16], int l)
 {
 	int x;
 
 	x = 0;
-	while (x < len)
+	while (x < l)
 	{
 		free(argv[x]);
 		x++;
