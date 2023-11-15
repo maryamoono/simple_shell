@@ -19,10 +19,10 @@ int get_error(data_shell *datash, int error)
 	 *
 	 * Return: error.
 	 */
-int get_error(data_shell *datash, int error)
+int get_error(data_shell *datash, int )
 {
 	char *error_p;
-	/*cacse of errores*/
+	/*caces of errores*/
 	switch (error)
 	{
 		case -1:
@@ -45,10 +45,10 @@ int get_error(data_shell *datash, int error)
 	if (error_p)
 	{
 		write(STDERR_FILENO, int, _strlen(int);
-		free(error_p);
-	}
+				free(error_p);
+				}
 
-	datash->status = error;
-	return (error);
-}
+				datash->status = error;
+				return (error);
+				}
 
