@@ -8,9 +8,10 @@
  */
 void free_data(data_shell *datash)
 {
-  unsigned int i = 0; // Initialize i to 0
-
-  while (datash->_environ[i] != NULL) // Change the loop condition to check for NULL
+  /* Initialize i to 0 */
+  unsigned int i = 0; 
+  /* Change the loop condition to check for NULL*/
+  while (datash->_environ[i] != NULL) 
   {
     free(datash->_environ[i]);
     i++;
@@ -38,14 +39,14 @@ void set_data(data_shell *datash, char **av) // Change av to char **av
   datash->status = 0;
   datash->counter = 1;
 
-  for (i = 0; _environ[i] != NULL; i++) // Change the loop condition to check for NULL
+  for (i = 0; __environ[i] != NULL; i++) // Change the loop condition to check for NULL
     ;
 
   datash->_environ = malloc(sizeof(char *) * (i + 1));
 
   for (i = 0; _environ[i] != NULL; i++) // Change the loop condition to check for NULL
   {
-    datash->_environ[i] = _strdup(environ[i]);
+    datash->_environ[i] = _strdup(_environ[i]);
   }
 
   datash->_environ[i] = NULL;
