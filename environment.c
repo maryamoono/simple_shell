@@ -1,4 +1,6 @@
 #include "shell.h"
+
+int cmp_environment_name(const char *nenv, const char *name);
 /**
  * _get_env - this function get an environment variable.
  *

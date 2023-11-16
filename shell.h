@@ -1,9 +1,8 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef  _SHELL_H_
+#define  _SHELL_H_
 
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -13,50 +12,22 @@
 #include <signal.h>
 #include <limits.h>
 
-extern char **environ;
-
-#define BUFFER_SIZE 1024
+#define BUFSIZE 1024
 #define TOK_BUFSIZE 128
 #define TOK_DELIM " \t\r\n\a"
 
+extern char **environ;
 
-void type_prompt(void);
-void clear_in(char *input, char *output);
-char *get_command_loction(char *co);
-int extract_arg(char *input, char *argv[16]);
-void free_arg(char *argv[16], int l);
-void free_co(char *co, char *argem);
-void env(void);
-void execute_f(char *x, char *n ,char *arge[16], int l, unsigned int w);
-int execute(char *i);
-int check_exit(char *i);
-int le_exit(char *x);
-int num(char *x);
-void pt_exit(char *ar[20], char *txt);
-
-char *_strcat(char *dest, const char *src);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-
-char *_strdup(const char *s);
-int _strlen(const char *s);
-int cmp_chars(char str[], const char *delim);
-char *_strtok(char str[], const char *delim);
-int _isdigit(const char *s);
-
-void rev_string(char *s);
 /**
-* struct data - struct that contains all relevant data on runtime
-* @av: argument vector
-* @input: command line written by the user
-* @args: tokens of the command line
-* @status: last status of the shell
-* @counter: lines counter
-* @_environ: environment variable
-* @pid: process ID of the shell
-*/
+ * struct data - struct that contains all relevant data on runtime
+ * @av: argument vector
+ * @input: command line written by the user
+ * @args: tokens of the command line
+ * @status: last status of the shell
+ * @counter: lines counter
+ * @_environ: environment variable
+ * @pid: process ID of the shell
+ */
 typedef struct data
 {
 	char **av;
@@ -110,7 +81,7 @@ typedef struct r_var_list
 
 /**
  * struct builtin_s - Builtin struct for command args.
- * @name: The name of the command builtin i.e cd, env
+ * @name: The name of the command builtin i.e cd, exit, env
  * @f: data type pointer function.
  */
 typedef struct builtin_s
@@ -127,6 +98,24 @@ void free_line_list(line_list **head);
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
 void free_rvar_list(r_var **head);
 
+char *_strcat(char *dest, const char *src);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+char *_strchr(char *s, char c);
+int _strspn(char *s, char *accept);
+
+void _memcpy(void *newptr, const void *ptr, unsigned int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+
+char *_strdup(const char *s);
+int _strlen(const char *s);
+int cmp_chars(char str[], const char *delim);
+char *_strtok(char str[], const char *delim);
+int _isdigit(const char *s);
+
+void rev_string(char *s);
+
 int repeated_char(char *input, int i);
 int error_sep_op(char *input, int i, char last);
 int first_char(char *input, int *i);
@@ -135,6 +124,7 @@ int check_syntax_error(data_shell *datash, char *input);
 
 char *without_comment(char *in);
 void shell_loop(data_shell *datash);
+
 char *read_line(int *i_eof);
 
 char *swap_char(char *input, int bool);
@@ -151,33 +141,7 @@ char *rep_var(char *input, data_shell *datash);
 void bring_line(char **lineptr, size_t *n, char *buffer, size_t j);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
-void cd_dot(data_shell *datash);
-void cd_to(data_shell *datash);
-void cd_previous(data_shell *datash);
-void cd_to_home(data_shell *datash); 
-int cd_shell(data_shell *datash);
-
-void copy_sigint(int sigint);
-
-int get_error(data_shell *datash, int error);
-
-int repeated_char(char *input, int i);
-int error_sep_op(char *input, int i, char last);
-int first_char(char *input, int *i);
-void print_syntax_error(data_shell *datash, char *input, int i, int bool);
-int check_syntax_error(data_shell *datash, char *input);
-
-char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str);
-char *error_get_cd(data_shell *datash);
-char *error_not_found(data_shell *datash);
-
-char *error_exit_shell(data_shell *datash);
-char *error_env(data_shell *datash);
-char *error_path_126(data_shell *datash);
-
-int get_lenght(int n);
-char *RM_itoa(int n);
-int _atoi(char *s);
+int exe_line(data_shell *datash);
 
 int cdir(char *path, int *i);
 char *locates(char *cmd, char **_environ);
@@ -185,24 +149,42 @@ int executable(data_shell *datash);
 int check_error_cmd(char *dir, data_shell *datash);
 int cmd_exe(data_shell *datash);
 
-int cmp_environment_name(const char *nenv, const char *name);
 char *_get_env(const char *name, char **_environ);
 int _env(data_shell *datash);
-void set_env(char *name, char *value, data_shell *datash);
-char *copy_info(char *name, char *value);
 
+char *copy_info(char *name, char *value);
+void set_env(char *name, char *value, data_shell *datash);
 int _setenv(data_shell *datash);
 int _unsetenv(data_shell *datash);
 
-void _memcpy(void *newptr, const void *ptr, unsigned int size);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
+void cd_dot(data_shell *datash);
+void cd_to(data_shell *datash);
+void cd_previous(data_shell *datash);
+void cd_to_home(data_shell *datash);
 
-void set_data(data_shell *datash , char **av);
-void free_data(data_shell *datash);
+int cd_shell(data_shell *datash);
 
-int (*get_builtin(char *cmd))(data_shell *);
-int exe_line(data_shell *datash);
+int (*get_builtin(char *cmd))(data_shell *datash);
+
 int exit_shell(data_shell *datash);
 
-#endif/*SHELL_H*/
+int get_lenght(int n);
+char *RM_itoa(int n);
+int _atoi(char *s);
+
+char *strcat_cd(data_shell *, char *, char *, char *);
+char *error_get_cd(data_shell *datash);
+char *error_not_found(data_shell *datash);
+char *error_exit_shell(data_shell *datash);
+
+char *error_get_alias(char **args);
+char *error_env(data_shell *datash);
+char *error_syntax(char **args);
+char *error_permission(char **args);
+char *error_path_126(data_shell *datash);
+
+int get_error(data_shell *datash, int eval);
+
+void copy_sigint(int sig);
+
+#endif/*SHELL.H*/
