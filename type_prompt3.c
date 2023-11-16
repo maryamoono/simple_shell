@@ -57,7 +57,7 @@ int le_exit(char *x)
 	{
 		if (ar[1] != NULL)
 		{
-			if (num(ar[1] = 0))
+			if (num(ar[1] == 0))
 			{
 				exit("uncorrect number: ", ar);
 				m = 2;
