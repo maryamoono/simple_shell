@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * main - cfxdzs
  * @void: cdx
@@ -6,42 +6,44 @@
  */
 int main(void)
 {
-	char *in = NULL;
-	int exit = 0;
-	int activ = isatty(STDIN_FILENO);
+	char *input = NULL;
+	int exit_status = 0;
+	int is_interactive = isatty(STDIN_FILENO);
 
-	while (1);
+	while (1)
 	{
-		if (activ)
+		if (is_interactive)
 		{
 			type_prompt();
 		}
-		in = read_in();
-		if (in == NULL)
+		input = readlinkat();
+
+		if (input == NULL)
 		{
-			if (activ)
+			if (is_interactive)
 				continue;
 			else
 				break;
 		}
-		if (check_exit(in)== 0)
+		if (check_exit(input) == 0)
 		{
-			exit = le_exit(in);
+			exit_status = le_exit(input);
 			break;
 		}
-		if (strcmp(in, "env") == 0)
+		if (strcmp(input, "env") == 0)
 			env();
-		else if (strlen(in) > 0)
-			exit = execute(in);
-		if (!activ)
+
+		else if (strlen(input) > 0)
+			exit_status = execute(input);
+		if (!is_interactive)
 		{
-			if (exit != 0)
+			if (exit_status != 0)
 				break;
 		}
-		free(in);
+		free(input);
 	}
-	free(in);
-	if (exit != 0)
-		exit(exit);
-	return (exit);
+	free(input);
+	if (exit_status != 0)
+		exit(exit_status);
+	return (exit_status);
 }

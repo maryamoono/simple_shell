@@ -25,12 +25,12 @@ int extract_arg(char *input, char *argv[16]);
 void free_arg(char *argv[16], int l);
 void free_co(char *co, char *argem);
 void env(void);
-void exe_f(char *x, char *n ,char *arge[16]);
-int exe(char *i);
-void pt_exit(char *ar[20], char *txt);
-int num(char *x);
-int le_exit(char *x);
+void execute_f(char *x, char *n ,char *arge[16], int l, unsigned int w);
+int execute(char *i);
 int check_exit(char *i);
+int le_exit(char *x);
+int num(char *x);
+void pt_exit(char *ar[20], char *txt);
 
 char *_strcat(char *dest, const char *src);
 char *_strcpy(char *dest, char *src);

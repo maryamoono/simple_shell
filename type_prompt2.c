@@ -11,19 +11,20 @@ void free_co(char *co, char *argem)
 		free(co);
 }
 /**
- * enviroment - lol
+ * env - lol
  * @void: void
  * Return: nbh
  */
 void env(void)
 {
+	char *env[100];
 	int x = 0;
 
 	while (env[x] != NULL)
 	{
 		write(1, env[x], strlen(env[x]));
 		write(1, "\n", 1);
-		x++:
+		x++;
 	}
 }
 /**
@@ -33,66 +34,63 @@ void env(void)
  * @arge: 20
  * Return: bgv
  */
-void exe_f(char *x, char *n ,char *arge[16])
+void execute_f(char *x, char *n ,char *arge[16], int l, unsigned int w)
 {
-	int l;
-	unsigned int w;
-
 	if (w != 0)
 		free(x);
-	free_arge(arge, l);
+	free_arg(arge, l);
 	free_co(n, arge[0]);
 }
 /**
- * exe - execute
+ * execute - execute
  * @i: index
  * Return: vg
  */
-int exe(char *i)
+int execute(char *i)
 {
-	char *co, *ar[16], error[32];
-	int s, b = 0;
+	char *co, *arg[16], error[32];
+	int stt, b = 0;
 	pid_t pid;
 
 	if (i == NULL)
 		exit(EXIT_SUCCESS);
-	b = extract_arge(i, ar);
-	co = arge[0];
+	b = extract_arg(i, arg);
+	co = arg[0];
 	co = get_command_loction(co);
 	if (co == NULL)
 	{
 		strcpy(error, "./hsh: 1: ");
 		strcat(error, ": not found\n");
 		write(STDERR_FILENO, error, strlen(error));
-		exe_f(i, co, ar, b, 0);
+		execute_f(i, co, arg, b, 0);
 		return (127);
 	}
 	pid = fork();
 	if (pid == -1)
 	{
 		write(STDERR_FILENO, "fork() error\n", 13);
-		exe_f(i, co, ar, b, 1);
+		execute_f(i, co, arg, b, 1);
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0)
 	{
-		if (execve(co, ar, NULL) == -1)
+		if (execve(co, arg, NULL) == -1)
 		{
 			perror("execve");
-			exe_f(i, co, ar, b, 1);
+			execute_f(i, co, arg, b, 1);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		if (waitpid(pid, &s, 0) == -1)
+		if (waitpid(pid, &stt, 0) == -1)
 		{
-			exe_f(i, co, ar, b, 1);
+			execute_f(i, co, arg, b, 1);
 			exit(EXIT_FAILURE);
 		}
-		exe_f(i, co, ar, b, 0);
-		return (WEXITSTATUS(s));
+		execute_f(i, co, arg, b, 0);
+		return (WEXITSTATUS(stt));
 	}
-	exe_f(i, co, ar, b, 0);
+	execute_f(i, co, arg, b, 0);
 	return (0);
 }
