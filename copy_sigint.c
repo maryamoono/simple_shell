@@ -9,5 +9,5 @@
 void copy_sigint(int sigint)
 {
 	(void)sigint;
-	write(STDOUT_FILENO, "\n^-^ ", 5);
+	write(STDOUT_FILENO, "\n$ ", 5);
 }
