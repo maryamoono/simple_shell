@@ -38,14 +38,15 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 /**
  * free_sep_list - this function to frees a sep_list
  *
+ * free_rvar_list - frees a r_var list
  * @head: head of the linked list.
  * 
  * Return: no return.
  */
-void free_sep_list(sep_list **head)
+void free_rvar_list(r_var **head)
 {
-	sep_list *temp;
-	sep_list *curr;
+	r_var *temp;
+	r_var *curr;
 
 	if (head != NULL)
 	{

@@ -203,5 +203,6 @@ void free_data(data_shell *datash);
 
 int (*get_builtin(char *cmd))(data_shell *);
 int exe_line(data_shell *datash);
+int exit_shell(data_shell *datash);
 
 #endif/*SHELL_H*/
