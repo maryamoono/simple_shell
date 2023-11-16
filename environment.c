@@ -1,29 +1,4 @@
 #include "shell.h"
-
-/**
- * cmp_environment_name - this function to 
- * compares env variables names with the name passed.
- *
- * @nenv: name of the environment variable
- * @name: name passed
- *
- * Return: 0 if are not equal. Another value if they are.
- */
-int cmp_environment_name(const char *nenv, const char *name)
-{
-	int i;
-
-	for (i = 0; nenv[i] != '='; i++)
-	{
-		if (nenv[i] != name[i])
-		{
-			return (0);
-		}
-	}
-
-	return (i + 1);
-}
-
 /**
  * _get_env - this function get an environment variable.
  *
@@ -90,6 +65,31 @@ int _env(data_shell *datash)
  *
  * Return: new env or alias.
  */
+/**
+ * cmp_environment_name - this function to 
+ * compares env variables names with the name passed.
+ *
+ * @nenv: name of the environment variable
+ * @name: name passed
+ *
+ * Return: 0 if are not equal. Another value if they are.
+ */
+int cmp_environment_name(const char *nenv, const char *name)
+{
+	int i;
+
+	for (i = 0; nenv[i] != '='; i++)
+	{
+		if (nenv[i] != name[i])
+		{
+			return (0);
+		}
+	}
+
+	return (i + 1);
+}
+
+
 char *copy_info(char *name, char *value)
 {
 	char *new;
