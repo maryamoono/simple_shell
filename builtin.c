@@ -11,11 +11,11 @@
 int (*get_builtin(char *cmd))(data_shell *)
 {
 	builtin_t builtin[] = {
-		{ "env", _env },
-		{ "setenv", _setenv },
-		{ "unsetenv", _unsetenv },
-		{ "cd", cd_shell },
-		{ NULL, NULL }
+		{"env", _env },
+		{"setenv", _setenv },
+		{"unsetenv", _unsetenv },
+		{"cd", cd_shell },
+		{NULL, NULL }
 	};
 	int i;
 
