@@ -47,7 +47,7 @@ char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
 
 void rev_string(char *s);
-**
+/**
 * struct data - struct that contains all relevant data on runtime
 * @av: argument vector
 * @input: command line written by the user
