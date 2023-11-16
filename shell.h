@@ -43,6 +43,7 @@ int _strlen(const char *s);
 int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
+int exe_line(data_shell *datash);
 
 void rev_string(char *s);
 /**
