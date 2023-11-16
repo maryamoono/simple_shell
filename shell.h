@@ -45,7 +45,6 @@ char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
 
 void rev_string(char *s);
-int (*get_builtin(char *cmd))(data_shell *);
 /**
  * struct data - struct that contains all relevant data on runtime.
  *
@@ -113,4 +112,5 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size);
 void set_data(data_shell *datash , char **av);
 void free_data(data_shell *datash);
 
+int (*get_builtin(char *cmd))(data_shell *);
 #endif
