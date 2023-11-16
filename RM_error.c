@@ -11,34 +11,33 @@
  */
 int get_error(data_shell *datash, int error)
 {
-  char *error_p;
-  /* Cases of errors */
-  switch (error)
-  {
-    case -1:
-      error_p = error_env(datash);
-      break;
-    case 126:
-      error_p = error_path_126(datash);
-      break;
-    case 127:
-      error_p = error_not_found(datash);
-      break;
-    case 2:
-      if (_strcmp("exit", datash->args[0]) == 0)
-        error_p = error_exit_shell(datash);
-      else if (_strcmp("cd", datash->args[0]) == 0)
-        error_p = error_get_cd(datash);
-      break;
-  }
+	char *error1;
 
-  if (error_p)
-  {
-    write(STDERR_FILENO, error_p, _strlen(error_p));
-    free(error_p);
-  }
+	switch (error)
+	{
+	case -1:
+		error1 = error_env(datash);
+		break;
+	case 126:
+		error1 = error_path_126(datash);
+		break;
+	case 127:
+		error1 = error_not_found(datash);
+		break;
+	case 2:
+		if (_strcmp("exit", datash->args[0]) == 0)
+			error1 = error_exit_shell(datash);
+		else if (_strcmp("cd", datash->args[0]) == 0)
+			error1 = error_get_cd(datash);
+		break;
+	}
 
-  datash->status = error;
-  return (error);
+	if (error1)
+	{
+		write(STDERR_FILENO, error1, _strlen(error1));
+		free(error1);
+	}
+
+	datash->status = error;
+	return (e);
 }
-
