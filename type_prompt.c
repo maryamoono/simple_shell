@@ -85,7 +85,7 @@ char *read_command(void)
 		}
 		break;
 	}
-	output = malloc(sizeof(char *) *(strlen(command) + 1));
+	output = malloc(sizeof(char *) * (strlen(command) + 1));
 	if (output == NULL)
 	{
 		free(command);
@@ -126,7 +126,8 @@ char *get_command_loction(char *co)
 			}
 			else
 			{free(f_path);
-				path_tk = strtok(NULL, ":");}
+				path_tk = strtok(NULL, ":");
+			}
 		}
 	}
 	else
@@ -136,7 +137,8 @@ char *get_command_loction(char *co)
 		if (stat(co, &buffer) == 0)
 			return (co);
 		else
-			return (NULL);}
+			return (NULL);
+	}
 	if (path_cy != NULL)
 		free(path_cy);
 	return (NULL);
@@ -162,21 +164,4 @@ int extract_arg(char *input, char *argv[16])
 	}
 	argv[x] = NULL;
 	return (x);
-}
-/**
- * free_arg - fcxdzs
- * @argv: vgcfxd
- * @l: fcxdz
- * Return: lko
- */
-void free_arg(char *argv[16], int l)
-{
-	int x;
-
-	x = 0;
-	while (x < l)
-	{
-		free(argv[x]);
-		x++;
-	}
 }

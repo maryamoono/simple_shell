@@ -1,5 +1,22 @@
 #include "shell.h"
 /**
+ * free_arg - fcxdzs
+ * @argv: vgcfxd
+ * @l: fcxdz
+ * Return: lko
+ */
+void free_arg(char *argv[16], int l)
+{
+        int x;
+
+        x = 0;
+        while (x < l)
+        {
+                free(argv[x]);
+                x++;
+        }
+}
+/**
  * free_co - likj
  * @co: command
  * @argem: kujh
