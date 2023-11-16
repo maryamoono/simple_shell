@@ -67,6 +67,17 @@ typedef struct data
 	char *pid;
 } data_shell;
 
+/**
+ * struct builtin_s - Builtin struct for command args.
+ * @name: The name of the command builtin i.e cd, exit, env
+ * @f: data type pointer function.
+ */
+typedef struct builtin_s
+{
+	char *name;
+	int (*f)(data_shell *datash);
+} builtin_t;
+
 void cd_dot(data_shell *datash);
 void cd_to(data_shell *datash);
 void cd_previous(data_shell *datash);
