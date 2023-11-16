@@ -43,7 +43,7 @@ void check_env(r_var **h, char *in, data_shell *data)
 }
 
 /**
- * check_vars - check if the typed variable is $$ or $?
+ * check_vars - this function to check if the typed variable is $$ or $?
  *
  * @h: head of the linked list
  * @in: input string
@@ -139,7 +139,7 @@ char *replaced_input(r_var **head, char *input, char *new_input, int nlen)
 }
 
 /**
- * rep_var - s function to calls functions to replace string into vars
+ * rep_var - This function to calls functions to replace string into vars
  *
  * @input: input string
  * @datash: data structure 
@@ -152,7 +152,7 @@ char *rep_var(char *input, data_shell *datash)
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = aux_itoa(datash->status);
+	status = RM_itoa(datash->status);
 	head = NULL;
 
 	olen = check_vars(&head, input, status, datash);
