@@ -49,7 +49,7 @@ void free_sep_list(sep_list **head)
 
 	if (head != NULL)
 	{
-		curr = *head;
+		curr == *head;
 		while ((temp = curr) != NULL)
 		{
 			curr = curr->next;
