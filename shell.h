@@ -43,7 +43,7 @@ int _strlen(const char *s);
 int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
-int exe_line(data_shell *datash);
+
 
 void rev_string(char *s);
 /**
@@ -125,4 +125,6 @@ void set_data(data_shell *datash , char **av);
 void free_data(data_shell *datash);
 
 int (*get_builtin(char *cmd))(data_shell *);
+int exe_line(data_shell *datash);
+
 #endif
