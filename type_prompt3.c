@@ -52,12 +52,12 @@ int le_exit(char *x)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	w = extract_args(x, ar);
+	w = extract_arg(x, ar);
 	if (strcmp(ar[0], "exit") == 0)
 	{
 		if (ar[1] != NULL)
 		{
-			if (num(ar[1] == 0))
+			if (num(ar[1] = 0))
 			{
 				exit("uncorrect number: ", ar);
 				m = 2;
@@ -73,7 +73,7 @@ int le_exit(char *x)
 			}
 		}
 	}
-	free_ar(ar, w);
+	free_arg(ar, w);
 	return (m);
 }
 /**
