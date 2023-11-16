@@ -1,10 +1,11 @@
+/**
 #include "shell.h"
 /**
  * exit - vcfd
  * @ar: bgvc
  * @txt: lol
  * Return: lol
- */
+ *
 void pt_exit(char *ar[20], char *txt)
 {
 	char error[128];
@@ -21,7 +22,7 @@ void pt_exit(char *ar[20], char *txt)
  * num - number is it
  * @x: index
  * Return: xwa
- */
+ *
 int num(char *x)
 {
 	while (*x != '\0')
@@ -41,7 +42,7 @@ int num(char *x)
  * le_exit - handel exit
  * @x: index
  * Return: fcf
- */
+ *
 int le_exit(char *x)
 {
 	char *ar[20];
@@ -80,7 +81,7 @@ int le_exit(char *x)
  * check_exit - nbgv
  * @i: vc
  * Return: vcf
- */
+ *
 int check_exit(char *i)
 {
 	int x = 0;
@@ -92,4 +93,4 @@ int check_exit(char *i)
 	}
 	rry[x] = '\0';
 	return (strcmp(rry, "exit"));
-}
+}*/
