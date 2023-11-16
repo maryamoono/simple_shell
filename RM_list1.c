@@ -34,19 +34,15 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 
 	return (*head);
 }
-
 /**
- * free_sep_list - this function to frees a sep_list
- *
- * free_rvar_list - frees a r_var list
+ * free_sep_list - frees a sep_list
  * @head: head of the linked list.
- * 
  * Return: no return.
  */
-void free_rvar_list(r_var **head)
+void free_sep_list(sep_list **head)
 {
-	r_var *temp;
-	r_var *curr;
+	sep_list *temp;
+	sep_list *curr;
 
 	if (head != NULL)
 	{
@@ -59,7 +55,6 @@ void free_rvar_list(r_var **head)
 		*head = NULL;
 	}
 }
-
 /**
  * add_line_node_end - this function to adds a command line at the end
  * of a line_list.
