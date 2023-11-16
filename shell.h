@@ -44,7 +44,6 @@ int cmp_chars(char str[], const char *delim);
 char *_strtok(char str[], const char *delim);
 int _isdigit(const char *s);
 
-
 void rev_string(char *s);
 /**
  * struct data - struct that contains all relevant data on runtime.
@@ -89,6 +88,11 @@ void copy_sigint(int sigint);
 
 int get_error(data_shell *datash, int error);
 
+int repeated_char(char *input, int i);
+int error_sep_op(char *input, int i, char last);
+int first_char(char *input, int *i);
+void print_syntax_error(data_shell *datash, char *input, int i, int bool);
+int check_syntax_error(data_shell *datash, char *input);
 
 char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str);
 char *error_get_cd(data_shell *datash);
