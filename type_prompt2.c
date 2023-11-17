@@ -34,12 +34,11 @@ void free_co(char *co, char *argem)
  */
 void env(void)
 {
-	char *env[100];
 	int x = 0;
 
-	while (env[x] != NULL)
+	while (environ[x] != NULL)
 	{
-		write(1, env[x], strlen(env[x]));
+		write(1, environ[x], strlen(environ[x]));
 		write(1, "\n", 1);
 		x++;
 	}
