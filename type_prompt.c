@@ -16,12 +16,12 @@ void type_prompt(void)
  */
 void clear_in(char *input, char *output)
 {
-	int i = 0;
-	int cd =  0;
+	int x = 0;
+	int re =  0;
 
 	if (*input == '#')
 	{
-		output[i] = '\0';
+		output[x] = '\0';
 		return; }
 	while (*input != '\0')
 	{
@@ -33,19 +33,19 @@ void clear_in(char *input, char *output)
 				input++;
 				break; }
 			input++;
-			cd = 1;
-			output[i++] = *input; }
+			re = 1;
+			output[x++] = *input; }
 		else if (*input != ' ')
 		{
-			cd  = 1;
-			output[i++] = *input; }
-		else if (cd == 1)
+			re = 1;
+			output[x++] = *input; }
+		else if (re == 1)
 		{
 			while (*input != '\0')
 			{
 				if (*input != ' ')
 				{
-					output[i++] = ' ';
+					output[x++] = ' ';
 					input--;
 					break;
 				}
@@ -54,7 +54,7 @@ void clear_in(char *input, char *output)
 		}
 		input++;
 	}
-	output[i] = '\0';
+	output[x] = '\0';
 }
 /**
  * read_command - displays  prompt and waits for the user to type a command
